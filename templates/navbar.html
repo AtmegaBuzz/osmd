@@ -1,0 +1,35 @@
+<!--==============================header=================================-->
+<header>
+    {%load static%}
+    <!-- main menu grid_12 for space-->
+        <div class="menu_block ">
+            <div class="container_12">
+                <div class="grid_12">
+                    <nav class="horizontal-nav full-width horizontalNav-notprocessed">
+                        <ul class="sf-menu">
+                            {%if user.is_authenticated%}
+                                <li ><a href="{%url 'home'%}">Home</a></li>
+                                <li ><a href="{%url 'services'%}">Services</a></li>
+                                <li><a href="{%url 'contact'%}">Contact Us</a></li>
+                            {%else%}
+                                <li ><a href="{%url 'login'%}">Login</a></li>
+                                <li><a href="{%url 'register'%}">Register</a></li>
+                            {%endif%}
+                        </ul>
+                    </nav>
+                    <div class="clear"></div>
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div class="container_12">
+            <div class="grid_12">
+                <h1>
+                    <a href="{%url 'home'%}">
+                        <img src="{% static 'images/logo.png' %}" , alt = "new logo"/>
+                    </a>
+                </h1>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </header>
