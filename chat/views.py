@@ -13,6 +13,6 @@ def chat(request,pk):
         'id':pk,
     }
     
-    
+     
     
     return render(request,'chat.html',context) 
