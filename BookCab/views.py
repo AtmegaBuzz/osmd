@@ -7,7 +7,7 @@ from osmd.algorithm import _main_
 import random
 # Create your views here.
 
-source = "maharashtra"
+source = "rajiv chowk"
 
 @check_authentication
 def home(request):
