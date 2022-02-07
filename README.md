@@ -1,7 +1,7 @@
 # osmd-cab-app
  one source multiple destination cab app, client project
 with integrated chat app , group chat
-Created By DTU Student Divyanshu Jain(Algorithm Implementation) + Swapnil Shinde(Frontend + Backend Implementation).
+Created By DTU Student Divyanshu Jain(Algorithm Implementation) + Swapnil Shinde(Frontend + Backend Implementation). Freelance Project for Divyanshu Jain
 
 -Client Requirements 
   1.given a algorithm based on bellman ford graph algorithm
