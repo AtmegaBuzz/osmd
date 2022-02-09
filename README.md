@@ -40,3 +40,10 @@ Technolologies used:
 # Chat Functionality.
 ![DeepinScreenshot_select-area_20220207153749](https://user-images.githubusercontent.com/68425016/152769124-3713e000-bbe8-46b9-a6a3-2d3c3017045d.png)
 
+#installation
+ - clone the repo 
+ - install requirements by ```pip install requirements.txt``` 
+ - run ```python manage.py makemigrations```
+ - run ```python manage.py migrate```
+ - run ```python manage.py runserver```
+
