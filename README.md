@@ -1,4 +1,4 @@
-<p><img src="https://raw.githubusercontent.com/AtmegaBuzz/osmd/tree/main/screenshots)screenshots/logo.png" alt="logo" width="20%" /></p>
+<p><img src="https://raw.githubusercontent.com/AtmegaBuzz/osmd/main/screenshots/logo.jpeg" alt="logo" width="20%" /></p>
 
 # osmd-cab-app
  one source multiple destination cab app, client project
