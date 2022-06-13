@@ -1,6 +1,7 @@
 
 <p><img src="https://raw.githubusercontent.com/AtmegaBuzz/osmd/main/screenshots/logo.jpeg" alt="logo" width="20%" /></p>
 
+# OSMD (One Source Multiple Destination)
 
 - [About Project](#About-Project)
 
