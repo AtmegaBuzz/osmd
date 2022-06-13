@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-wdr)*7mfxxw1!4n=%#x$5q9u84e)ad+t05xf)@aegksmi-e)cs'
+SECRET_KEY = config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config('DEBUG',default=True,catst=bool)
 
 ALLOWED_HOSTS = ["*"]
 
@@ -146,7 +147,7 @@ CHANNEL_LAYERS = {
     'default':{
         'BACKEND':'channels_redis.core.RedisChannelLayer',
         'CONFIG':{
-            "hosts": [('redis://:cSzWpfNqIOkhD8gJJRD0VYi66ZViHo5R@redis-16918.c270.us-east-1-3.ec2.cloud.redislabs.com:16918')]
+            "hosts": [(config("REDIS_HOST_URI"))]
             
         }
     }

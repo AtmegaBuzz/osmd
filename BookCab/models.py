@@ -6,7 +6,12 @@ from django.core.validators import MinValueValidator,MaxValueValidator
 class CabGroup(models.Model):
     name = models.CharField(max_length=100,blank=True,null=True)
     
-    
+
+# root destination of the organization offering the services
+class Source(models.Model):
+    location_name = models.TextField(blank=False,null=False)
+
+
 class Booking(models.Model):
     
     destination = models.CharField(max_length=50,blank=False,null=True)

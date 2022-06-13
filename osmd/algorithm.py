@@ -1,10 +1,18 @@
 import googlemaps
-from itertools import permutations
 import math
-import time
 import pymysql
+import os
 
-gmaps = googlemaps.Client(key='AIzaSyBR9lt1hVQn_oWnGFAs9vP_yyZ-ORaVGz0')
+from itertools import permutations
+from BookCab.models import (
+    Booking,
+    Source
+)
+
+from decouple import config
+
+
+gmaps = googlemaps.Client(key=config("google_api_key","dasdasd"))
 
 
 
@@ -128,7 +136,13 @@ users = list()
 groups = list()
 n = 0
 answer = 1e9
-home_source = "Rajiv Chowk"
+home_source = Source.objects.values_list(
+    "location_name"
+    ).all().first()
+
+# set default root location
+if not home_source:
+    source = 'rajiv chowk'
 
 def solve(taxino, curloc, curtime, users_in_taxi, cost, best_config):
 
@@ -258,15 +272,12 @@ def populate_user_list(bookings) :
         
     return users
 
-from BookCab.models import Booking,CabGroup
-import random
-def _main_():
+
+def main():
 
     global n
     global users
     global groups
-
-    import time
    
     bookings = Booking.objects.all().filter(status=0)
     users = populate_user_list(bookings)

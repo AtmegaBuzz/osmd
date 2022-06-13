@@ -1,6 +1,10 @@
 from django.contrib import admin
-from .models import Booking,CabGroup
-# Register your models here.
+from BookCab.models import (
+    Booking,
+    CabGroup,
+    Source
+)
 
 admin.site.register(Booking)
 admin.site.register(CabGroup)
+admin.site.register(Source)

@@ -1,13 +1,29 @@
+import random
+
 from django.http.response import Http404, HttpResponse
 from django.shortcuts import render
-from osmd.decorators import check_authentication
-from .models import Booking, CabGroup
 from django.contrib import messages
-from osmd.algorithm import _main_
-import random
+
+from osmd.decorators import check_authentication
+from osmd.algorithm import main
+
+from BookCab.models import (
+    Booking, 
+    CabGroup,
+    Source
+)
 # Create your views here.
 
-source = "rajiv chowk"
+# location of root organization offering the services
+
+source = Source.objects.values_list(
+    "location_name"
+    ).all().first()
+
+# set default root location
+if not source:
+    source = 'rajiv chowk'
+
 
 @check_authentication
 def home(request):
@@ -18,11 +34,13 @@ def home(request):
         try:
             # booking having status code ongoing
             bookings_ongoing = Booking.objects.all().filter(status=0)
-            b = Booking.objects.create(destination=destination,user=request.user)
-            if len(bookings_ongoing)>=4:
-                print(bookings_ongoing)
-                groups =  _main_()
-                print(len(groups),"-----------")
+
+            # create bookings if there are more than 4 ongoing request in queue
+            Booking.objects.create(destination=destination,user=request.user)
+            if bookings_ongoing.__len__()>=4:
+
+                groups =  main()
+
                 for group in groups:
                     name = f"grp{random.randint(1,10000)}:{random.randbytes(10000)}"
                     grp = CabGroup.objects.create(name=name)
@@ -35,18 +53,14 @@ def home(request):
                             cost = usrAttr.cost,
                             distance = usrAttr.distance,
                         )
-                        print(usrAttr.booking_id,booking_a[0].destination,booking_a[0].status)
                            
                     
-                    print("cab ended")
             else:
-                print("added to ongoing queue")
-            messages.success(request,message="request added successfuly")
+                messages.success(request,message="request added successfuly")
             
                 
         except Exception as e:
             messages.success(request,message="allocation failed try again later!")
-            print("failed",e)
 
     return render(request,'index.html')
 
@@ -59,11 +73,11 @@ def services(request):
         "bookings":bookings,
     }
     
-    return render(request,'index-3.html',context)
+    return render(request,'services.html',context)
 
 @check_authentication
 def contact(request):
-    return render(request,'index-4.html')
+    return render(request,'contact.html')
 
 @check_authentication
 def detailGroup_view(request,pk):
@@ -83,9 +97,4 @@ def detailGroup_view(request,pk):
     else:
         raise Http404("No groups found")
     
-    
-    
 
-@check_authentication
-def groupChat_view(request,pk):
-    return HttpResponse("hello world",pk)
