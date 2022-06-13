@@ -33,7 +33,7 @@ This Idea focuses on providing the common Open-Source Infrastructure to the Orga
 
 <a id="Working"></a>
 
-## How it Works
+# How it Works
 ```This Algorithm for this app is created by NSIT Last year student colaborated with Swapnil Shinde for Implementation. Last year project NSIT```
 1.It Is based on Bellman Ford algorith for shortest path | One source Multiple destination.
 2.This app takes the Const Starting point which will be same for all users , it can be a organisation or a school.
