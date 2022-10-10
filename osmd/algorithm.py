@@ -11,13 +11,13 @@ from BookCab.models import (
 
 from decouple import config
 
-
+print(config("google_api_key","dasdasd"),"=====")
 gmaps = googlemaps.Client(key=config("google_api_key","dasdasd"))
 
 
 
 def get_distance(src, dest):
-
+    
     if src + dest in distance_matrix_map:
         return distance_matrix_map[src + dest]
     else :
@@ -138,7 +138,8 @@ n = 0
 answer = 1e9
 home_source = Source.objects.values_list(
     "location_name"
-    ).all().first()
+    ).all().first()[0]
+
 
 # set default root location
 if not home_source:

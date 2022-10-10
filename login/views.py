@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.shortcuts import redirect, render
-from django.contrib.auth  import get_user_model,authenticate,login
+from django.contrib.auth  import get_user_model,authenticate,login,logout
 
 # Create your views here.
 
@@ -54,3 +54,9 @@ def register(request):
                 
     
     return render(request,'register.html')
+
+
+def logout_view(request):
+    
+    logout(request)
+    return redirect('login')

@@ -61,6 +61,7 @@ def home(request):
                 
         except Exception as e:
             messages.success(request,message="allocation failed try again later!")
+            print(e)
 
     return render(request,'index.html')
 
